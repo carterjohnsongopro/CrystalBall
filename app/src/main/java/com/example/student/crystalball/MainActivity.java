@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView answerText;
 
     private SensorManager sensorManager;
+    private Sensor accelerometer;
     private float acceleration;
     private  float currentAcceleration;
     private float previousAcceleration;
@@ -37,5 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
         answerText = (TextView) findViewById(R.id.answerText);
         answerText.setText(Predictions.get().getPrediction);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }
