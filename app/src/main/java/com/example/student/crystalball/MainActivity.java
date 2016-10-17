@@ -7,7 +7,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.FloatMath;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,20 +16,20 @@ public class MainActivity extends AppCompatActivity {
 
     private SensorManager sensorManager;
     private Sensor accelerometer;
-    private float acceleration;
-    private  float currentAcceleration;
-    private float previousAcceleration;
+    private double acceleration;
+    private  double currentAcceleration;
+    private double previousAcceleration;
 
     private final SensorEventListener sensorListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-    float x  = event.values[0];
-            float y  = event.values[1];
-            float z  = event.values[2];
+            double x  = event.values[0];
+            double y  = event.values[1];
+            double z  = event.values[2];
 
             previousAcceleration = currentAcceleration;
-            currentAcceleration = FloatMath.sqrt(x * x + y * y + z * z);
-            float delta = currentAcceleration - previousAcceleration;
+            currentAcceleration = Math.sqrt(x * x + y * y + z * z);
+            double delta = currentAcceleration - previousAcceleration;
             acceleration = acceleration * 0.9f + delta;
 
             if (acceleration > 15) {
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         previousAcceleration = sensorManager.GRAVITY_EARTH;
 
         answerText = (TextView) findViewById(R.id.answerText);
-        answerText.setText(Predictions.get().getPrediction);
+        answerText.setText(Predictions.get().getPrediction());
     }
 
     @Override
@@ -72,6 +71,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        sensorManager.registerListener(sensorListener, accelerometer, sensorManager.SENSOR_DELAY_NORMAL)
+        sensorManager.registerListener(sensorListener, accelerometer, sensorManager.SENSOR_DELAY_NORMAL);
     }
 }
