@@ -14,6 +14,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         answerText = (TextView) findViewById(R.id.answerText);
-        answerText.setText("reply is hazy try again tommorow");
+        answerText.setText(Predictions.get().getPrediction);
     }
 }
