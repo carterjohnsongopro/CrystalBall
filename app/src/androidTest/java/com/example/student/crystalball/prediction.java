@@ -9,4 +9,11 @@ public class prediction {
     private prediction() {
 
     }
+
+    public static prediction get() {
+        if(prediction == null) {
+            prediction = new prediction();
+        }
+        return prediction;
+    }
 }
