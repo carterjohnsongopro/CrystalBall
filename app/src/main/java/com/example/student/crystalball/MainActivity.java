@@ -51,10 +51,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        sensorManager.unregisterListener(sensorListener);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        sensorManager.registerListener(sensorListener, accelerometer, sensorManager.SENSOR_DELAY_NORMAL)
     }
 }
