@@ -4,10 +4,13 @@ package com.example.student.crystalball;
 
 public class prediction {
 
-    public static prediction prediction;
+    private static prediction prediction;
+    private String[] answers;
 
     private prediction() {
-
+    answers = new String[] {
+      "youre wishes will come true"
+    };
     }
 
     public static prediction get() {
